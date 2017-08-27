@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- 具体配置内容 -->
+	<!-- 连接数据库驱动 -->
+	<classPathEntry
+		location="E:\mr\mysql\mysql-connector-java\5.0.4\mysql-connector-java-5.0.4.jar" />
+
+
+	<context id="gen" defaultModelType="flat">
+
+		<!-- 关键字前缀和后缀 -->
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+
+		<!-- 生成注释配置 -->
+		<commentGenerator >  <!-- type="mybatis.MyCommentGenerator" 自定义类 -->
+			<property name="suppressAllComments" value="true" />
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+
+		<!-- 数据库配置 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/demo" userId="root"
+			password="123456">
+		</jdbcConnection>
+
+
+
+		<!-- 设置精度类型转换java -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="true" />
+		</javaTypeResolver>
+
+
+
+		<!-- 生成实体类 -->
+		<javaModelGenerator targetPackage="com.fohow.entity"
+			targetProject="demo-manager-entity\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- 生成映射文件 -->
+		<sqlMapGenerator targetPackage="mapper" targetProject="demo-manager-mapper\src\main\resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- 生成的接接口 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.fohow.dao" targetProject="demo-manager-mapper\src\main\java" />
+
+
+		<!-- 要生成的表 -->
+		<!-- domainObjectName 生成对象的名称 -->
+		<table tableName="%">
+			<!-- <generatedKey column="id" sqlStatement="Mysql"/> -->
+		</table>
+
+	</context>
+</generatorConfiguration>  
